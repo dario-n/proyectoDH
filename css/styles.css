@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  width: 100vw;
+  height: 0vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #1c1c1c;
+  color: #fff;
+  font-size: 1.5em;
+  overflow: hidden;
+  transition: 350ms;
+}
+
+.navbar a {
+  display: block;
+  color: #fff;
+  padding: 1em 0;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: solid 1px #fff;
+}
+
+#menunav {
+  display: none;
+}
+
+#menunav:checked~.navbar {
+  height: 100vh;
+}
+
+.open-menu {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 2em;
+}
+
+.close-menu {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.5em;
+}
+
+.login-container {
+  display: table;
+  height: 100vh;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.login {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.login button{
+  margin: 0.833%;
+}
+
+.login-footer ul {
+  overflow: hidden;
+}
+.login-footer li {
+  float: left;
+  width: 48.33%;
+  margin: 0 0.833%;
+  text-align: center;
+}
