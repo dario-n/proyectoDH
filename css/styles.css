@@ -1,3 +1,4 @@
+/*Resets*/
 * {
   box-sizing: border-box;
 }
@@ -5,6 +6,8 @@
 body {
   font-family: sans-serif;
   font-size: 10px;
+  background-color: #1c1c1c;
+  color: #fff;
 }
 
 ul, ol {
@@ -15,8 +18,10 @@ ul, ol {
 
 a {
   text-decoration: none;
+  color: #fff;
 }
 
+/*Nav Bar*/
 .navbar {
   width: 100vw;
   height: 0vh;
@@ -61,28 +66,87 @@ a {
   font-size: 1.5em;
 }
 
-.login-container {
-  display: table;
-  height: 100vh;
-  margin: 0 auto;
-  text-align: right;
+/*Logo*/
+.logo{
+  display: block;
+  width: 50vw;
+  margin: auto;
 }
 
-.login {
-  display: table-cell;
-  vertical-align: middle;
+/*Login*/
+.login-form {
+  display: flex;
+  flex-flow: wrap column;
+  flex-direction: row;
+  margin: 30px auto;
 }
 
-.login button{
+.login-form label {
+  padding: 5px 0;
+
+}
+
+.login-form input {
+  margin: 3px 0;
+  width: 100%;
+}
+
+#chbx {
+  width: 50%;
+}
+#recordar {
+  width: 50%;
+}
+
+.login-form button{
+  width: 45%;
+  color: #fff;
   margin: 0.833%;
+  background-color: #7c1010;
+  border-radius: 5px;
+  border: solid 1px #fff;
+  padding: 0.5em;
+
+}
+
+.login-footer {
+  width: 50%;
+  margin: 0;
 }
 
 .login-footer ul {
-  overflow: hidden;
+  margin: 3px 0;
 }
+
 .login-footer li {
-  float: left;
-  width: 48.33%;
-  margin: 0 0.833%;
-  text-align: center;
+  text-align: right;
+}
+
+/*Formulario de Registro*/
+.register-container {
+  margin: 10% auto;
+}
+.register-form{
+  display: flex;
+  align-items:stretch;
+  flex-flow: wrap column;
+  justify-content: space-around;
+}
+
+.register-form button {
+  color: #fff;
+  margin: 0.833%;
+  background-color: #7c1010;
+  border-radius: 5px;
+  border: solid 1px #fff;
+  padding: 0.5em;
+}
+
+/*FAQ*/
+.faq-container {
+  margin: 15% auto;
+}
+
+.qa {
+  border: dashed 1px #494a47;
 }

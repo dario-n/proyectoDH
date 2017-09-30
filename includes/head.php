@@ -9,3 +9,6 @@
     <title><?php echo $tabName; ?></title>
   </head>
   <body>
+    <header class="main-header">
+      <img src="img/logo.png" alt="logo" class="logo">
+    </header>
