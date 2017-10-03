@@ -130,32 +130,77 @@ a {
 }
 
 
-/*Formulario de Registro*/
-
-.register-container {
-  margin: 3% auto;
+/*REGISTRO*/
+section.formulario_registro {
+ margin: 20px auto 0px auto;
+ width: 400px;
+ min-height: 100px;
+ background-color: black;
+ overflow: hidden;
+ border: white 3px solid;
+ border-radius: 10px;
+}
+p.mensaje_registro  {
+ color: white;
+ font-size: 1.6em;
+ text-align: center;
+ margin-top: 20px;
+}
+.ingreso_login h4 {
+ color: white;
+ font-size: 1em;
+ text-align: center;
+ margin-bottom: 10px;
+}
+.formulario_registro a {
+ color: #8B0000;
+ cursor: pointer;
+}
+.formulario_registro input {
+ width: 350px;
+ margin-left: 20px;
+ height: 35px;
+ margin-top: 10px;
+ padding-left: 10px;
+ outline: none;
+ border: 0px;
+ background-color: white;
+}
+.formulario_registro input[value=RESET]{
+ margin-bottom: 20px;
+ width: 360px;
+ height: 40px;
+ outline: none;
+ border: white 2px solid;
+ background-color: #8B0000;
+ color: white;
+ font-size: 1.2em;
+ border-radius: 5px;
+ cursor: pointer;
+}
+.formulario_registro input[value=REGISTRARSE] {
+ margin-top: 40px;
+ width: 360px;
+ height: 40px;
+ outline: none;
+ border: white 2px solid;
+ background-color: #8B0000;
+ color: white;
+ font-size: 1.2em;
+ border-radius: 5px;
+ cursor: pointer;
 }
 
-.register-form {
-  display: flex;
-  align-items: stretch;
-  flex-flow: wrap column;
-  justify-content: space-around;
+@media (max-width: 480px) {
+ section.formulario_registro  {
+   font-size: 1em;
+   width: 90%;
 }
-
-.register-form label {
-  padding: 3px 0;
+.formulario_registro input, .formulario_registro input[value=REGISTRARSE], .formulario_registro input[value=RESET]{
+  display: block;
+  width: 90%;
+  margin: 10px auto;
 }
-
-.register-form button {
-  color: #fff;
-  margin: 0.833%;
-  background-color: #7c1010;
-  border-radius: 5px;
-  border: solid 1px #fff;
-  padding: 0.5em;
-}
-
 
 /*FAQ*/
 

@@ -1,30 +1,18 @@
-<?php $tabName = "Registro" ?>
+<?php $tabName="Registro" ?>
 <?php require_once("includes/head.php") ?>
-<?php require_once("./includes/navbar.php") ?>
-
-
-    <section class="register-container">
-      <h2>Complete el Formulario:</h2>
-      <form class="register-form" action="micuenta.php" method="post">
-      <label for="name">Ingrese su Nombre: </label>
-      <input type="text" name="name" placeholder="Nombre" id="name">
-      <br>
-      <label for="lastname">Ingrese su Apellido: </label>
-      <input type="text" name="lastname" placeholder="Apellido" id="lastname">
-      <br>
-      <label for="email">Ingrese su Email: </label>
-      <input type="email" name="email" placeholder="tuemail@email.com" id="email">
-      <br>
-      <label for="user">Ingrese su Usuario: </label>
-      <input type="text" name="user" placeholder="Nombre de Usuario">
-      <br>
-      <label for="pwd">Contrasena: </label>
-      <input type="password" name="pwd" placeholder="mas de 6 caracteres" id="pwd">
-      <br>
-      <label for="equals">Repita su Contrasena: </label>
-      <input type="password" name="equals" id="equals">
-      <br><br>
-      <button type="submit" name="register">Registrarse</button><button type="button" name="reset">Reset</button>
+<?php require_once("includes/navbar.php") ?>
+    <section class="formulario_registro">
+      <p class="mensaje_registro"><strong>COMPLETA EL FORMULARIO</strong></p>
+      <form class="todos_input"action="index.html" method="post">
+        <input type="text" id="nombre" name="nombre" placeholder="NAME">
+        <input type="text" id="nombre" name="nombre" placeholder="LASTNAME">
+        <input type="text" id="nombre" name="nombre" placeholder="NICKNAME">
+        <input type="email" id="mail" name="mail" placeholder="EMAIL">
+        <input type="password" id="contraseña" name="contraseña" placeholder="PASSWORD">
+        <input type="password" id="contraseña" name="contraseña" placeholder="CONFIRM PASSWORD">
+        <input type="submit" value="REGISTRARSE">
+        <input type="submit" value="RESET">
+        <h4 class="ingreso_login">¿Ya tienes una cuenta? <a href="#">ingresa aquí</a></h4>
       </form>
     </section>
 <?php require_once("./includes/footer.php") ?>
