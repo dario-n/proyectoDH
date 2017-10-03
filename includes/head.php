@@ -10,5 +10,5 @@
   </head>
   <body>
     <header class="main-header">
-      <img src="img/logo.png" alt="logo" class="logo">
+      <a href="index.php"><img src="img/logo.png" alt="logo" class="logo"></a>
     </header>
