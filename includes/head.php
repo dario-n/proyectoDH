@@ -10,5 +10,7 @@
   </head>
   <body>
     <header class="main-header">
-      <a href="index.php"><img src="img/logo.png" alt="logo" class="logo"></a>
+      <a href="index.php"><img src="img/logo-mobile.png" alt="logo-mobile" class="logo-mobile">
+        <img src="img/logo-xl.png" alt="logo-xl" class="logo-xl">
+      </a>
     </header>

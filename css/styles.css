@@ -23,9 +23,7 @@ a {
   color: #fff;
 }
 
-
 /*Nav Bar*/
-
 .navbar {
   width: 100vw;
   height: 0vh;
@@ -70,17 +68,26 @@ a {
   font-size: 1.5em;
 }
 
-
 /*Logo*/
-
-.logo {
+.logo-mobile {
   display: block;
   margin: 20px auto;
   width: 50%;
 }
 
+.logo-xl {
+  display: none;
+}
 
 /*Login*/
+.login-container {
+  margin: 20px auto;
+  background-color: #000;
+  overflow: hidden;
+  border-bottom: solid 3px #fff;
+  border-top: solid 3px #fff;
+  font-size: 1.2em;
+}
 
 .login-form {
   display: flex;
@@ -94,8 +101,13 @@ a {
 }
 
 .login-form input {
-  margin: 3px 0;
   width: 100%;
+  display: block;
+  margin: 10px 0;
+}
+
+#pwd, #user {
+  height: 35px;
 }
 
 #chbx {
@@ -108,12 +120,15 @@ a {
 
 .login-form button {
   width: 45%;
+  height: 40px;
   color: #fff;
   margin: 0.833%;
   background-color: #7c1010;
   border-radius: 5px;
-  border: solid 1px #fff;
+  border: solid 2px #fff;
   padding: 0.5em;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 .login-footer {
@@ -127,92 +142,74 @@ a {
 
 .login-footer li {
   text-align: right;
+  padding: 5px 0;
+  font-weight: bold;
 }
 
-
-/*REGISTRO*/
-section.formulario_registro {
- margin: 20px auto 0px auto;
- width: 400px;
- min-height: 100px;
- background-color: black;
- overflow: hidden;
- border: white 3px solid;
- border-radius: 10px;
-}
-p.mensaje_registro  {
- color: white;
- font-size: 1.6em;
- text-align: center;
- margin-top: 20px;
-}
-.ingreso_login h4 {
- color: white;
- font-size: 1em;
- text-align: center;
- margin-bottom: 10px;
-}
-.formulario_registro a {
- color: #8B0000;
- cursor: pointer;
-}
-.formulario_registro input {
- width: 350px;
- margin-left: 20px;
- height: 35px;
- margin-top: 10px;
- padding-left: 10px;
- outline: none;
- border: 0px;
- background-color: white;
-}
-.formulario_registro input[value=RESET]{
- margin-bottom: 20px;
- width: 360px;
- height: 40px;
- outline: none;
- border: white 2px solid;
- background-color: #8B0000;
- color: white;
- font-size: 1.2em;
- border-radius: 5px;
- cursor: pointer;
-}
-.formulario_registro input[value=REGISTRARSE] {
- margin-top: 40px;
- width: 360px;
- height: 40px;
- outline: none;
- border: white 2px solid;
- background-color: #8B0000;
- color: white;
- font-size: 1.2em;
- border-radius: 5px;
- cursor: pointer;
+/*Formulario de Registro*/
+.register-container {
+  margin: 20px auto;
+  background-color: #000;
+  overflow: hidden;
+  border-bottom: solid 3px #fff;
+  border-top: solid 3px #fff;
 }
 
-@media (max-width: 480px) {
- section.formulario_registro  {
-   font-size: 1em;
-   width: 90%;
+.register-container h2 {
+  text-align: center;
+  margin-top: 20px;
 }
-.formulario_registro input, .formulario_registro input[value=REGISTRARSE], .formulario_registro input[value=RESET]{
+
+.register-container h4 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.register-container a {
+  color: #7c1010;
+}
+
+.register-container input {
+  width: 100%;
   display: block;
-  width: 90%;
   margin: 10px auto;
+  height: 35px;
+}
+
+.register-container button {
+  display: block;
+  margin: 20px auto;
+  width: 90%;
+  height: 40px;
+  border: solid 2px #fff;
+  background-color: #7c1010;
+  color: #fff;
+  font-size: 1.2em;
+  border-radius: 5px;
 }
 
 /*FAQ*/
-
 .faq-container {
-  margin: 30px auto;
+  margin: 20px auto;
+  background-color: #000;
+  overflow: hidden;
+  border-bottom: solid 3px #fff;
+  border-top: solid 3px #fff;
+  font-size: 1.2em;
 }
 
 .qa {
   border: dashed 1px #7c1010;
 }
 
+/*Footer*/
+.main-footer {
+  position: static;
+  bottom: 0;
+}
+
 @media (min-width:500px) {
+
   /*Nav Bar*/
   .navbar {
     width: 0;
@@ -220,7 +217,6 @@ p.mensaje_registro  {
     position: static;
     background-color: transparent;
   }
-
   .navbar ul {
     overflow: hidden;
   }
@@ -248,18 +244,48 @@ p.mensaje_registro  {
   .close-menu {
     display: none;
   }
+
   /*Logo*/
-  .logo {
+  .logo-mobile {
     width: 100%;
     max-width: 200px;
+  }
+
+  /*Login*/
+  .login-container {
+    width: 90%;
+    border-radius: 10px;
+    border: solid 3px #fff;
+  }
+  .login-form label {
+    width: 100%;
+    font-size: 1.2em;
+  }
+  .login-form input {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  /*Formulario de Registro*/
+  .register-container {
+    width: 90%;
+    border-radius: 10px;
+    border: solid 3px #fff;
+  }
+  .register-container input, .register-container button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
   }
 }
 
 @media (min-width:1000px) {
+
   /*Nav Bar*/
   .navbar {
     margin: 30px auto;
     width: 100%;
+    max-width: 1200px;
   }
   .open-menu {
     display: none;
@@ -267,17 +293,32 @@ p.mensaje_registro  {
   .close-menu {
     display: none;
   }
-  /*Login*/
-  .login-form {
-    font-size: 1.5em;
-    margin: 30px auto;
-    width: 40vw;
-    max-width: 250px;
+
+  /*Logo*/
+  .logo-mobile {
+    display: none;
   }
+  .logo-xl {
+    display: block;
+    margin: auto;
+  }
+
+  /*Login*/
+  .login-container {
+    width: 25%;
+    max-width: 1200px;
+  }
+
+  /*Formulario de Registro*/
   .register-container {
-    font-size: 1.5em;
-    width: 50vw;
-    max-width: 600px;
-    margin: 5% auto;
+    width: 50%;
+    max-width: 800px;
+  }
+  
+  /*FAQ*/
+  .faq-container {
+    border-radius: 10px;
+    border: solid 3px #fff;
+    max-width: 800px;
   }
 }
