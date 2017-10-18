@@ -10,6 +10,7 @@ body {
   background-image: url(../img/background.png);
   background-size: contain;
   color: #fff;
+  height: 100%;
 }
 
 ul, ol {
@@ -23,7 +24,9 @@ a {
   color: #fff;
 }
 
+
 /*Nav Bar*/
+
 .navbar {
   width: 100vw;
   height: 0vh;
@@ -68,7 +71,9 @@ a {
   font-size: 1.5em;
 }
 
+
 /*Logo*/
+
 .logo-mobile {
   display: block;
   margin: 20px auto;
@@ -79,7 +84,9 @@ a {
   display: none;
 }
 
+
 /*Login*/
+
 .login-container {
   margin: 20px auto;
   background-color: #000;
@@ -146,7 +153,16 @@ a {
   font-weight: bold;
 }
 
+.login-error {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 2em;
+  color: #f00;
+}
+
+
 /*Formulario de Registro*/
+
 .register-container {
   margin: 20px auto;
   background-color: #000;
@@ -188,7 +204,9 @@ a {
   border-radius: 5px;
 }
 
+
 /*FAQ*/
+
 .faq-container {
   margin: 20px auto;
   background-color: #000;
@@ -202,14 +220,18 @@ a {
   border: dashed 1px #7c1010;
 }
 
+
 /*Footer*/
+
 .main-footer {
-  position: static;
-  bottom: 0;
+  clear: both;
+}
+
+.index-container {
+  font-size: 1.2em;
 }
 
 @media (min-width:500px) {
-
   /*Nav Bar*/
   .navbar {
     width: 0;
@@ -244,13 +266,11 @@ a {
   .close-menu {
     display: none;
   }
-
   /*Logo*/
   .logo-mobile {
     width: 100%;
     max-width: 200px;
   }
-
   /*Login*/
   .login-container {
     width: 90%;
@@ -265,7 +285,6 @@ a {
     width: 90%;
     margin: 10px auto;
   }
-
   /*Formulario de Registro*/
   .register-container {
     width: 90%;
@@ -280,7 +299,6 @@ a {
 }
 
 @media (min-width:1000px) {
-
   /*Nav Bar*/
   .navbar {
     margin: 30px auto;
@@ -293,7 +311,6 @@ a {
   .close-menu {
     display: none;
   }
-
   /*Logo*/
   .logo-mobile {
     display: none;
@@ -302,23 +319,23 @@ a {
     display: block;
     margin: auto;
   }
-
   /*Login*/
   .login-container {
     width: 25%;
     max-width: 1200px;
   }
-
   /*Formulario de Registro*/
   .register-container {
     width: 50%;
     max-width: 800px;
   }
-  
   /*FAQ*/
   .faq-container {
     border-radius: 10px;
     border: solid 3px #fff;
     max-width: 800px;
+  }
+  .index-container {
+    font-size: 2em;
   }
 }

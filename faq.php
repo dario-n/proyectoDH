@@ -1,4 +1,6 @@
-<?php $tabName = "FAQ" ?>
+<?php
+session_start();
+$tabName = "FAQ" ?>
 <?php require_once("includes/head.php") ?>
 <?php require_once("includes/navbar.php") ?>
     <section class="faq-container">
