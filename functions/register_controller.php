@@ -1,7 +1,10 @@
 <?php
   session_start();
   $errores = [];
-  if (!$_POST) header("location: ../index.php");
+  if (!$_POST) {
+    header("location: ../index.php");
+    exit;
+  }
   $data = $_POST;
   if (trim($data['nombre']) == '') $errores['nombre'] = '(no has ingresado tu nombre)';
   if (trim($data['apellido']) == '') $errores['apellido'] = '(no has ingresado tu apellido)';
@@ -44,7 +47,7 @@
     $nuevo_usuario['last_name'] = $data['apellido'];
     $nuevo_usuario['user'] = $data['user'];
     $nuevo_usuario['mail'] = $data['mail'];
-    $nuevo_usuario['pwd'] = password_hash($nuevo_usuario['pwd'], PASSWORD_DEFAULT);
+    $nuevo_usuario['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
     $json = json_encode($nuevo_usuario);
     file_put_contents('../json/usuarios.json', $json.PHP_EOL, FILE_APPEND);
   }
