@@ -1,8 +1,7 @@
 <?php
 session_start();
-
+require_once('remember.php');
 $archivo = fopen('../json/usuarios.json', 'r');
-$usuarios = [];
 
 if ($archivo) {
   while (($linea = fgets($archivo)) !== false) {
@@ -21,13 +20,11 @@ if ($archivo) {
 }
 fclose($archivo);
 
-$expira = time() + 36000;
-
 if (password_verify($_POST['pwd'], $linea['pwd'])) {
   $_SESSION['error'] = '';
   $_SESSION['status'] = 1;
   if ($_POST['recordar']) {
-    setcookie('recordar',1, $expira);
+    comprobarRemember();
   }
   header('Location:../index.php');
 }

@@ -1,5 +1,9 @@
 <?php
 session_start();
+require_once('./functions/remember.php');
+if (!isset($_SESSION['status'])) {
+cookieLogin();
+}
 $tabName = "FAQ" ?>
 <?php require_once("includes/head.php") ?>
 <?php require_once("includes/navbar.php") ?>
