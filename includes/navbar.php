@@ -10,13 +10,16 @@
           </label>
         </li>
         <li><a href="index.php">Home</a></li>
-        <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 1): ?><li><a href="functions/desloguear.php">Desloguear</a></li>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 1): ?>
+          <li><a href="perfil.php"><?=$_SESSION['user']; ?></a></li>
+        <?php else: ?>
+                <li><a href="registro.php">Registro</a></li>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['status']) && $_SESSION['status'] == 1): ?>
+          <li><a href="functions/desloguear.php">Desloguear</a></li>
       <?php else: ?><li><a href="login.php">Login</a></li>
 <?php endif; ?>
-<?php if (isset($_SESSION['status']) && $_SESSION['status'] == 1): ?><li><a href="index.php">Registro</a></li>
-<?php else: ?>
-        <li><a href="registro.php">Registro</a></li>
-<?php endif; ?>
+
         <li><a href="faq.php">FAQ</a></li>
       </ul>
     </nav>
