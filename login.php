@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('./functions/remember.php');
 if (!isset($_SESSION['status'])) {
 cookieLogin();

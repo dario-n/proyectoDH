@@ -1,4 +1,5 @@
 <?php
+session_start();
 function renovarRemember ($posicion,$rnd) {
   $archivo = file_get_contents('../json/remember.json');
 
