@@ -84,6 +84,43 @@ a {
   display: none;
 }
 
+/*Error de conexion*/
+
+.db-error-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+.db-error {
+  padding: 10px;
+  font-size: 2em;
+  text-align: center;
+  background-color: red;
+  color: white;
+  border: solid 3px white;
+  border-radius: 10px;
+}
+
+.db-error div {
+  margin: 10px;
+  color: yellow;
+  font-size: 0.7em;
+}
+
+.db-error input {
+  font-size: 0.7em;
+  display: block;
+  width: 70%;
+  height: 40px;
+  color: #fff;
+  margin: 5px auto;
+  background-color: #7c1010;
+  border-radius: 5px;
+  border: solid 2px #fff;
+  padding: 0.5em;
+  cursor: pointer;
+}
 
 /*Login*/
 

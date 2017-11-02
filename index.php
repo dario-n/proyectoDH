@@ -1,4 +1,5 @@
 <?php
+require_once('functions/mysql_connection.php');
 require_once('./functions/remember.php');
 if (!isset($_SESSION['status'])) {
 cookieLogin();
