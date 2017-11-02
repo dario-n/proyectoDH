@@ -38,7 +38,7 @@ if (isset($_POST["importar"])) {
     $stmt->bindValue(3, $usuario['pwd'], PDO::PARAM_STR);
     $stmt->bindValue(4, $usuario['nombre'], PDO::PARAM_STR);
     $stmt->bindValue(5, $usuario['last_name'], PDO::PARAM_STR);
-    $stmt->bindValue(6, $usuario['user'], PDO::PARAM_STR);
+    $stmt->bindValue(6, $usuario['img'], PDO::PARAM_STR);
     $stmt->execute();
   }
   fclose($gestor);

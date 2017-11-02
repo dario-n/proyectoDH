@@ -1,6 +1,5 @@
 <?php
   session_start();
-  require_once("mysql_connection.php");
   $errores = [];
   if (!$_POST) {
     header("location: ../index.php");
@@ -11,7 +10,7 @@
   if (trim($data['apellido']) == '') $errores['apellido'] = '(no has ingresado tu apellido)';
   if (trim($data['mail']) == '') $errores['mail'] = '(no has ingresado tu email)';
   elseif (!filter_var($data['mail'], FILTER_VALIDATE_EMAIL)) $errores['mail'] = '(el mail '.$data['mail'].' no es válido)';
-  elseif (check_exists('mail', $data['mail'])) $errores['mail'] = '(el mail '.$data['mail'].' ya ha sido registrado)';
+  elseif (check_exists('mail', $data['mail'])) $errores['mail'] = '(el mail '.$data['mail'].' ya ha sido registrado';
   if (trim($data['user']) == '') $errores['user'] = '(no has ingresado ningún nombre de usuario))';
   elseif (check_exists('user', $data['user'])) $errores['user'] = '(el usuario '.$data['user'].' ya existe)';
   if (trim($data['pwd']) == '') $errores['pwd'] = "(no has ingresado una contraseña)";
@@ -48,25 +47,42 @@
   // funciones
 
   function check_exists($campo, $data) {
-    global $db;
-    $stmt = $db->prepare("SELECT COUNT(id) cant FROM users WHERE $campo = :data");
-    $stmt->bindValue(":data", $data, PDO::PARAM_STR);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $results[0]['cant']>0;
+    $gestor = fopen('../json/usuarios.json', "r");
+    $found = false;
+    while ($linea = fgets($gestor)) {
+      $usuario = json_decode($linea, true);
+      if ($usuario[$campo] == $data) {
+        $found = true;
+        break;
+      }
+    }
+    fclose($gestor);
+    return $found;
+  }
+
+  function get_new_id() {
+    $file="../json/usuarios.json";
+    $linecount = 0;
+    $handle = fopen($file, "r");
+    while(!feof($handle)){
+      $line = fgets($handle);
+      $linecount++;
+    }
+    fclose($handle);
+    return $linecount;
   }
 
   function registrar_usuario($data) {
-    global $db;
-    $stmt = $db->prepare("INSERT INTO users (nombre, apellido, user, mail, pwd, img) VALUES (:nombre, :apellido, :user, :mail, :pwd, :img)");
-    $stmt->bindValue(':nombre', $data['nombre'], PDO::PARAM_STR);
-    $stmt->bindValue(':apellido', $data['apellido'], PDO::PARAM_STR);
-    $stmt->bindValue(':user', $data['user'], PDO::PARAM_STR);
-    $stmt->bindValue(':mail', $data['mail'], PDO::PARAM_STR);
-    $stmt->bindValue(':pwd', password_hash($data['pwd'], PASSWORD_DEFAULT), PDO::PARAM_STR);
-    $stmt->bindValue(':img', $data['user'].'.'.$data['ext'], PDO::PARAM_STR);
-    $stmt->execute();
+    $nuevo_usuario = [];
+    $nuevo_usuario['id'] = get_new_id();
+    $nuevo_usuario['nombre'] = $data['nombre'];
+    $nuevo_usuario['last_name'] = $data['apellido'];
+    $nuevo_usuario['user'] = $data['user'];
+    $nuevo_usuario['mail'] = $data['mail'];
+    $nuevo_usuario['pwd'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
+    $nuevo_usuario['img'] = $data['user'].'.'.$data['ext'];
+    $json = json_encode($nuevo_usuario);
+    file_put_contents('../json/usuarios.json', $json.PHP_EOL, FILE_APPEND);
   }
-
 
  ?>
