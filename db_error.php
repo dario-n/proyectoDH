@@ -4,7 +4,7 @@ $error = 0;
 $message = "";
 
 try {
-  $db = new PDO("mysql:host=$host;dbname=mysql;charset=UTF8", "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  $db = new PDO("mysql:host=$host;dbname=mysql;charset=UTF8", "root", "root", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 } catch (PDOException $e) {
   $error = 1;
   $message = $e->getMessage();
