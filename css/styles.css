@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Share Tech Mono', monospace;
   font-size: 10px;
-  background-image: url(../img/background.png);
+  background-image: url(../img/background.jpeg);
   background-size: contain;
   color: #fff;
   height: 100%;
@@ -23,6 +23,9 @@ a {
   text-decoration: none;
   color: #fff;
 }
+button{
+  font-family: 'Share Tech Mono', monospace;
+}
 
 
 /*Nav Bar*/
@@ -34,7 +37,6 @@ a {
   left: 0;
   top: 0;
   background-color: #1c1c1c;
-  color: #fff;
   font-size: 1.5em;
   overflow: hidden;
   transition: 350ms;
@@ -42,11 +44,18 @@ a {
 
 .navbar a {
   display: block;
-  color: #fff;
   padding: 1em 0;
   text-transform: uppercase;
   text-align: center;
-  border-bottom: solid 1px #fff;
+}
+
+.navpicto {
+  color: #dd9617;
+  border-bottom: solid 1px #dd9617;
+}
+.navtype {
+  color: #1796dd;
+  border-bottom: solid 1px #1796dd;
 }
 
 #menunav {
@@ -73,16 +82,20 @@ a {
 
 
 /*Logo*/
-
-.logo-mobile {
+.main-header {
   display: block;
+  text-align: center;
   margin: 20px auto;
-  width: 50%;
+  font-size: 4em;
+  font-weight: bold;
+}
+.picto {
+  color: #dd9617;
+}
+.type {
+  color: #1796dd;
 }
 
-.logo-xl {
-  display: none;
-}
 
 /*Error de conexion*/
 
@@ -128,8 +141,8 @@ a {
   margin: 20px auto;
   background-color: #000;
   overflow: hidden;
-  border-bottom: solid 3px #fff;
-  border-top: solid 3px #fff;
+  border-bottom: solid 3px #dd9617;
+  border-top: solid 3px #1796dd;
   font-size: 1.2em;
 }
 
@@ -165,11 +178,11 @@ a {
 .login-form button {
   width: 45%;
   height: 40px;
-  color: #fff;
+  color: #dd9617;
   margin: 0.833%;
-  background-color: #7c1010;
+  background-color: #212121;
   border-radius: 5px;
-  border: solid 2px #fff;
+  border: solid 2px #1796dd;
   padding: 0.5em;
   font-size: 1.2em;
   cursor: pointer;
@@ -204,8 +217,8 @@ a {
   margin: 20px auto;
   background-color: #000;
   overflow: hidden;
-  border-bottom: solid 3px #fff;
-  border-top: solid 3px #fff;
+  border-bottom: solid 3px #dd9617;
+  border-top: solid 3px #1796dd;
 }
 .register-container h1 {
   text-align: center;
@@ -223,16 +236,9 @@ a {
 }
 
 .register-container a {
-  color: #7c1010;
+  color: #1796dd;
 }
 
-.register-container label {
-  display: block;
-  width: 100%;
-  height: 35px;
-  text-align: center;
-  margin: auto;
-}
 .register-container input {
   width: 100%;
   display: block;
@@ -245,45 +251,88 @@ a {
   width: 90%;
   height: 40px;
   line-height: 40px;
-  border: solid 2px #fff;
-  background-color: #7c1010;
-  color: #fff;
+  font-size: 1.2em;
+  border-radius: 5px;
+  text-align: center;
+}
+.regpicto {
+  border: solid 2px #1796dd;
+  background-color: #212121;
+  color: #dd9617;
+}
+.regtype {
+  border: solid 2px #dd9617;
+  background-color: #212121;
+  color: #1796dd;
+}
+/*Perfil*/
+.perfil-container {
+  margin: 20px auto;
+  background-color: #000;
+  overflow: hidden;
+  border-bottom: solid 3px #dd9617;
+  border-top: solid 3px #1796dd;
+}
+.perfil-container button {
+  display: block;
+  margin: 20px auto;
+  width: 90%;
+  height: 40px;
+  line-height: 40px;
   font-size: 1.2em;
   border-radius: 5px;
 }
-/*Perfil*/
 .usuario-perfil {
   margin: 20px auto;
   background-color: #000;
   width: 60%;
   overflow: hidden;
-  border-bottom: solid 3px #fff;
-  border-top: solid 3px #fff;
+  border-bottom: solid 3px #1796dd;
+  border-top: solid 3px #dd9617;
+}
+.usuario-perfil img {
+  display: block;
+  width: 100%;
+  margin: auto;
 }
 .logros {
   margin: 20px auto;
+  border: solid 3px #1796dd;
   background-color: #000;
   width: 80%;
+  text-align: center;
   overflow: hidden;
 }
-.register-container h1 {
+.perfil-container h1 {
   text-align: center;
   margin-top: 20px;
+}
+.perfpicto {
+  border: solid 2px #1796dd;
+  background-color: #212121;
+  color: #dd9617;
+}
+.perftype {
+  border: solid 2px #dd9617;
+  background-color: #212121;
+  color: #1796dd;
 }
 
 /*FAQ*/
 
 .faq-container {
   margin: 20px auto;
+  padding: 5px 0;
   background-color: #000;
   overflow: hidden;
-  border-bottom: solid 3px #fff;
-  border-top: solid 3px #fff;
+  border-bottom: solid 3px #dd9617;
+  border-top: solid 3px #1796dd;
   font-size: 1.2em;
 }
 
 .qa {
-  border: dashed 1px #7c1010;
+  padding: 5px;
+  border: dashed 1px #1796dd;
 }
 
 
@@ -298,6 +347,9 @@ a {
 }
 
 @media (min-width:500px) {
+  body {
+    background-size: 25%;
+  }
   /*Nav Bar*/
   .navbar {
     width: 0;
@@ -314,19 +366,24 @@ a {
     margin: 0 0.833%;
   }
   .navbar a {
-    color: #000;
-    background-color: #fff;
+    background-color: #212121;
     padding: 1em;
-    border-bottom: none;
     border-radius: 5px;
-    border: solid 1px #7c1010;
+  }
+  .navpicto {
+    border: solid 1px #1796dd;
+    border-bottom: solid 1px #1796dd;
+  }
+  .navtype {
+    border: solid 1px #dd9617;
+    border-bottom: solid 1px #dd9617;
   }
   #menunav:checked~.navbar {
     width: 100vw;
     height: auto;
   }
   .open-menu {
-    top: 200px;
+    top: 50px;
     font-size: 3em;
   }
   .close-menu {
@@ -341,7 +398,7 @@ a {
   .login-container {
     width: 90%;
     border-radius: 10px;
-    border: solid 3px #fff;
+    border: solid 3px #dd9617;
   }
   .login-form label {
     width: 100%;
@@ -355,16 +412,37 @@ a {
   .register-container {
     width: 90%;
     border-radius: 10px;
-    border: solid 3px #fff;
+    border: solid 3px #dd9617;
   }
   .register-container input, .register-container button {
     display: block;
     width: 90%;
     margin: 10px auto;
   }
+  /*Perfil*/
+  .perfil-container {
+    width: 90%;
+    border-radius: 10px;
+    border: solid 3px #dd9617;
+  }
+  .perfil-container button {
+    display: block;
+    width: 50%;
+    margin: 10px auto;
+  }
+  .usuario-perfil {
+    border-bottom: solid 3px #dd9617;
+    border-top: solid 3px #1796dd;
+  }
+  .usuario-perfil img {
+    width: 50%;
+  }
 }
 
 @media (min-width:1000px) {
+  body {
+    background-size: 15%;
+  }
   /*Nav Bar*/
   .navbar {
     margin: 30px auto;
@@ -387,7 +465,7 @@ a {
   }
   /*Login*/
   .login-container {
-    width: 25%;
+    width: 30%;
     max-width: 1200px;
   }
   /*Formulario de Registro*/
@@ -395,10 +473,14 @@ a {
     width: 50%;
     max-width: 800px;
   }
+  /*Perfil*/
+  .usuario-perfil img {
+    width: 25%;
+  }
   /*FAQ*/
   .faq-container {
     border-radius: 10px;
-    border: solid 3px #fff;
+    border: solid 3px #dd9617;
     max-width: 800px;
   }
   .index-container {

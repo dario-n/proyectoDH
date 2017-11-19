@@ -44,13 +44,10 @@
     header("location: ../registro.php");
   }
 
-
-  // funciones
-
-  function check_exists($campo, $data) {
+  function comprobarEmail($email) {
     global $db;
-    $stmt = $db->prepare("SELECT COUNT(id) cant FROM users WHERE $campo = :data");
-    $stmt->bindValue(":data", $data, PDO::PARAM_STR);
+    $stmt = $db->prepare("SELECT COUNT(id) cant FROM users WHERE email = :email");
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results[0]['cant']>0;

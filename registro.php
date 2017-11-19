@@ -1,37 +1,50 @@
 <?php
-session_start();
-if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
-  header('Location: index.php');
-  exit();
+require_once('./includes/clases.php');
+if (!$auth->estaLogueado()) {
+$auth->cookieLogin();
+}
+if ($auth->estaLogueado()) {
+  header("Location:index.php");
+  exit;
+}
+
+$nombreDefault = "";
+$apellidoDefault = "";
+$userDefault = "";
+$emailDefault = "";
+$imagenDefault = "";
+
+$errores = [];
+
+if ($_POST) {
+  $errores = $validator->validarInformacion($_POST, $db);
+
+  if (!isset($errores['nombre'])) {
+    $nombreDefault = $_POST['nombre'];
+  }
+  if (!isset($errores['apellido'])) {
+    $apellidoDefault = $_POST['apellido'];
+  }
+  if (!isset($errores['user'])) {
+    $userDefault = $_POST['user'];
+  }
+  if (!isset($errores['email'])) {
+    $emailDefault = $_POST['email'];
+  }
+  if (!isset($error['imagen'])) {
+    $imagenDefault = $_FILES['imagen'];
   }
 
-$data = [
-  'nombre' => '',
-  'apellido' => '',
-  'user' => '',
-  'mail' => '',
-  'pwd' => '',
-];
+  if (count($errores) == 0) {
+    $usuario = new Usuario($_POST["user"], $_POST["email"], $_POST["pwd"], $_POST["nombre"], $_POST["apellido"], ($_POST["user"] .'.' .pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION)));
 
-if (isset($_SESSION['persistence'])) {
-  $data = $_SESSION['persistence'];
-  unset($_SESSION['persistence']);
+    $usuario->guardarImagen();
+    $usuario = $db->guardarUsuario($usuario);
+    $auth->loguear($usuario->getUsername());
+    header("Location:perfil.php");
+    exit;
+  }
 }
-
-if (isset($_SESSION['errores'])) {
-  $errores = $_SESSION['errores'];
-  unset($_SESSION['errores']);
-  if (!empty($errores['user'])) $data['user']='';
-  if (!empty($errores['mail'])) $data['mail']='';
-  if (!empty($errores['pwd'])) $data['pwd']='';
-}
-
-if (!isset($errores['nombre'])) $errores['nombre']='';
-if (!isset($errores['apellido'])) $errores['apellido']='';
-if (!isset($errores['user'])) $errores['user']='';
-if (!isset($errores['mail'])) $errores['mail']='';
-if (!isset($errores['pwd'])) $errores['pwd']='';
-if (!isset($errores['imagen'])) $errores['imagen']='';
 
 
 $tabName="Registro" ?>
@@ -40,15 +53,26 @@ $tabName="Registro" ?>
 
     <section class="register-container">
       <h2>COMPLETA EL FORMULARIO</h2>
-      <form class="register-form" action="functions/register_controller.php" method="post" enctype="multipart/form-data">
-        <input type="text" id="nombre" name="nombre" placeholder="NOMBRE  <?=$errores['nombre']?>" value="<?=$data['nombre']?>">
-        <input type="text" id="nombre" name="apellido" placeholder="APELLIDO  <?=$errores['apellido']?>" value="<?=$data['apellido']?>">
-        <input type="text" id="nombre" name="user" placeholder="NICK  <?=$errores['user']?>" value="<?=$data['user']?>">
-        <input type="email" id="mail" name="mail" placeholder="EMAIL  <?=$errores['mail']?>" value="<?=$data['mail']?>">
-        <input type="password" id="contraseña" name="pwd" value="<?=$data['pwd']?>" placeholder="CONTRASEÑA  <?=$errores['pwd']?>">
-        <input type="password" id="contraseña" name="pwd_rep" value="<?=$data['pwd']?>" placeholder="CONFIRMAR CONTRASEÑA">
-        <label for="imagen" id="image_label">Elegir imagen de perfil <?=$errores['imagen']?></label>
-        <input type="file" name="imagen" id="imagen" style="display: none;" accept="image/*" value="<?=$data['file']?>">
+      <div class="login-error">
+        <ul>
+        <?php if (count($errores) > 0): ?>
+          <?php foreach ($errores as $error) : ?>
+            <li>
+              <?=$error?>
+            </li>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </ul>
+      </div>
+      <form class="register-form" method="post" enctype="multipart/form-data">
+        <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" value="<?=$nombreDefault?>">
+        <input type="text" id="apellido" name="apellido" placeholder="APELLIDO" value="<?=$apellidoDefault?>">
+        <input type="text" id="user" name="user" placeholder="NICK" value="<?=$userDefault?>">
+        <input type="email" id="mail" name="email" placeholder="EMAIL" value="<?=$emailDefault?>">
+        <input type="password" id="contraseña" name="pwd" placeholder="CONTRASEÑA">
+        <input type="password" id="contraseña" name="pwd_rep" placeholder="CONFIRMAR CONTRASEÑA">
+        <label class="regpicto" for="imagen" id="image_label">Elegir imagen de perfil</label>
+        <input type="file" name="imagen" id="imagen" style="display: none;" accept="image/*" value="<?=$imagenDefault?>">
         <script type="text/javascript">
           document.getElementById("imagen").onchange = function() {
             var label = document.getElementById("image_label");
@@ -59,9 +83,9 @@ $tabName="Registro" ?>
             else label.innerHTML = "Elegir imagen de perfil";
           }
         </script>
-        <button type="submit" name="registrar">Registrarse</button>
-        <button type="reset" name="reset">Reset</button>
-        <h4>¿Ya tienes una cuenta? <a href="login.php">ingresa aquí</a></h4>
+        <button class="regtype" type="submit" name="registrar">Registrarse</button>
+        <button class="regpicto" type="reset" name="reset">Reset</button>
+        <h4 class="picto">¿Ya tienes una cuenta? <a href="login.php">ingresa aquí</a></h4>
       </form>
     </section>
 

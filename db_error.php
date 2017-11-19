@@ -4,22 +4,22 @@ $error = 0;
 $message = "";
 
 try {
-  $db = new PDO("mysql:host=$host;dbname=mysql;charset=UTF8", "root", "root", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  $db = new PDO("mysql:host=$host;dbname=mysql;charset=UTF8", "dario", "1234", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 } catch (PDOException $e) {
   $error = 1;
   $message = $e->getMessage();
 }
 
 if (isset($_POST["crearBase"])) {
-  $db->exec("CREATE DATABASE IF NOT EXISTS proyectoDH;");
+  $db->exec("CREATE DATABASE IF NOT EXISTS proyectodh_db;");
 }
 
 if (isset($_POST["crearTabla"])) {
-  $db->exec("USE proyectoDH");
+  $db->exec("USE proyectodh_db");
   $db->exec("CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user VARCHAR(30) NOT NULL,
-    mail VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
     pwd VARCHAR(100) NOT NULL,
     nombre VARCHAR(50),
     apellido VARCHAR(50),
@@ -29,12 +29,12 @@ if (isset($_POST["crearTabla"])) {
 
 if (isset($_POST["importar"])) {
   $gestor = fopen('json/usuarios.json', "r");
-  $db->exec("USE proyectoDH");
+  $db->exec("USE proyectodh_db");
   $stmt = $db->prepare("INSERT INTO users VALUES (0,?,?,?,?,?,?);");
   while ($linea = fgets($gestor)) {
     $usuario = json_decode($linea, true);
     $stmt->bindValue(1, $usuario['user'], PDO::PARAM_STR);
-    $stmt->bindValue(2, $usuario['mail'], PDO::PARAM_STR);
+    $stmt->bindValue(2, $usuario['email'], PDO::PARAM_STR);
     $stmt->bindValue(3, $usuario['pwd'], PDO::PARAM_STR);
     $stmt->bindValue(4, $usuario['nombre'], PDO::PARAM_STR);
     $stmt->bindValue(5, $usuario['last_name'], PDO::PARAM_STR);
@@ -46,7 +46,7 @@ if (isset($_POST["importar"])) {
 
 if (isset($db)) {
   try {
-    $db->exec("USE proyectoDH;");
+    $db->exec("USE proyectodh_db;");
     try {
       $stmt = $db->query("SELECT COUNT(ID) cant FROM users");
       $cant = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -89,4 +89,4 @@ if ($error == 0) {
           <?php endif ?>
          </div>
       </div>
- <?php require_once("./includes/footer.php") ?>
+ <?php require_once("includes/footer.php") ?>

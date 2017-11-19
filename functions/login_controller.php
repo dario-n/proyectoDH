@@ -23,7 +23,10 @@ if ($user) {
     $_SESSION['apellido'] = $user['apellido'];
     $_SESSION['mail'] = $user['mail'];
     $_SESSION['img'] = $user['img'];
+    var_dump($_POST);
+    exit();
     if ($_POST['recordar']) {
+
       comprobarRemember();
     }
     header('Location:../index.php');

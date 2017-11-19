@@ -19,7 +19,6 @@ function renovarRemember ($posicion,$rnd) {
 
   setcookie ($_SESSION['user'], password_hash($rnd, PASSWORD_DEFAULT), (time()+(60*60*24*360)), '/');
 }
-// setcookie ($_SESSION['user'], password_hash($rnd, PASSWORD_DEFAULT), (time()+(60*60*24*360)), '/');
 
 function crearRemember ($rnd) {
   $nuevalinea = [];
